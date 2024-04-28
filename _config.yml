@@ -23,4 +23,4 @@ repo_name: "TBD"
 repo: ucsb-cs156-s24/team02-s24-4pm-7
 owner: ucsb-cs156-s24
 repo_name: team02-s24-4pm-7
-pull_requests: [{"author":{"id":"U_kgDOBYEQGw","is_bot":false,"login":"nadavital","name":"Nadav Avital"},"headRefName":"nadav-dev","number":43,"title":"Implemented first task for MenuItemReview","url":"https://github.com/ucsb-cs156-s24/team02-s24-4pm-7/pull/43"}]
+pull_requests: [{"author":{"id":"MDQ6VXNlcjUyOTMyMjQ1","is_bot":false,"login":"rkibel","name":"Ron Kibel"},"headRefName":"Ron-HelpRequest","number":44,"title":"Help Request","url":"https://github.com/ucsb-cs156-s24/team02-s24-4pm-7/pull/44"},{"author":{"id":"U_kgDOBYEQGw","is_bot":false,"login":"nadavital","name":"Nadav Avital"},"headRefName":"nadav-dev","number":43,"title":"Implemented first task for MenuItemReview","url":"https://github.com/ucsb-cs156-s24/team02-s24-4pm-7/pull/43"}]
