@@ -23,10 +23,9 @@
             "columns": [
               {
                 "column": {
-                  "autoIncrement": true,
                   "constraints": {
                     "primaryKey": true,
-                    "primaryKeyName": "CONSTRAINT_5"
+                    "primaryKeyName": "ORGANIZATION_KEY"
                   },
                   "name": "ORG_CODE",
                   "type": "VARCHAR(255)"
@@ -35,7 +34,7 @@
               {
                 "column": {
                   "name": "ORG_TRANSLATION_SHORT",
-                  "type": "TIMESTAMP"
+                  "type": "VARCHAR(255)"
                 }
               },
               {
