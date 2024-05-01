@@ -137,14 +137,14 @@ public class UCSBOrganizationsControllerTests extends ControllerTestCase {
                                 .orgCode("ORG1")
                                 .orgTranslationShort("01")
                                 .orgTranslation("Organization1")
-                                .inactive(false)
+                                .inactive(true)
                                 .build();
 
                 when(ucsbOrganizationsRepository.save(eq(org))).thenReturn(org);
 
                 // act
                 MvcResult response = mockMvc.perform(
-                                post("/api/ucsborganizations/post?name=org&orgCode=ORG1&orgTranslationShort=01&orgTranslation=Organization1&inactive=false")
+                                post("/api/ucsborganizations/post?name=org&orgCode=ORG1&orgTranslationShort=01&orgTranslation=Organization1&inactive=true")
                                                 .with(csrf()))
                                 .andExpect(status().isOk()).andReturn();
 
@@ -256,9 +256,9 @@ public class UCSBOrganizationsControllerTests extends ControllerTestCase {
 
                 UCSBOrganizations cssaEdited = UCSBOrganizations.builder()
                                 .orgCode("CSSA")
-                                .orgTranslationShort("CHinese SSA")
-                                .orgTranslation("Chinese Students and Scholars Association")
-                                .inactive(true)
+                                .orgTranslationShort("Chinese SSA")
+                                .orgTranslation("Chinese Students and Scholars")
+                                .inactive(false)
                                 .build();
 
                 String requestBody = mapper.writeValueAsString(cssaEdited);
