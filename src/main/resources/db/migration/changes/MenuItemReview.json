@@ -27,7 +27,7 @@
                       "autoIncrement": true,
                       "constraints": {
                         "primaryKey": true,
-                        "primaryKeyName": "CONSTRAINT_5"
+                        "primaryKeyName": "CONSTRAINT_MENUITEMREVIEW"
                       },
                       "name": "ID",
                       "type": "BIGINT"
@@ -64,7 +64,7 @@
                     }
                 }
                 ],
-                "tableName": "UCSBDATES"
+                "tableName": "MENUITEMREVIEW"
               }
             }
           ]
