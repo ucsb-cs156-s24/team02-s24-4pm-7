@@ -10,6 +10,7 @@ import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import liquibase.pro.packaged.P;
+import liquibase.pro.packaged.me;
 import lombok.extern.slf4j.Slf4j;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
@@ -34,7 +35,7 @@ import java.time.LocalDateTime;
 @RequestMapping("/api/menuitemreview")
 @RestController
 @Slf4j
-public class MenuItemReviewController {
+public class MenuItemReviewController extends ApiController{
 
     @Autowired
     MenuItemReviewRepository menuItemReviewRepository;
@@ -54,7 +55,7 @@ public class MenuItemReviewController {
             @Parameter(name="itemId") @RequestParam long itemId,
             @Parameter(name="reviewerEmail") @RequestParam String reviewerEmail,
             @Parameter(name="stars") @RequestParam int stars,
-            @Parameter(name="date (in iso format, e.g. YYYY-mm-ddTHH:MM:SS; see https://en.wikipedia.org/wiki/ISO_8601)") @RequestParam("dateReviewed") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime dateReviewed,
+            @Parameter(name="dateReviewed") @RequestParam("dateReviewed") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime dateReviewed,
             @Parameter(name="comments") @RequestParam String comments)
             throws JsonProcessingException {
 
@@ -75,5 +76,48 @@ public class MenuItemReviewController {
         return savedMenuItemReview;
     }
 
-    
+    @Operation(summary= "Get a single menuitemreview")
+    @PreAuthorize("hasRole('ROLE_USER')")
+    @GetMapping("")
+    public MenuItemReview getById(
+            @Parameter(name="id") @RequestParam Long id) {
+        MenuItemReview menuItemReview = menuItemReviewRepository.findById(id)
+                .orElseThrow(() -> new EntityNotFoundException(MenuItemReview.class, id));
+
+        return menuItemReview;
+    }
+
+    @Operation(summary= "Delete a menuitemreview")
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
+    @DeleteMapping("")
+    public Object deleteMenuItemReview(
+            @Parameter(name="id") @RequestParam Long id) {
+        MenuItemReview menuItemReview = menuItemReviewRepository.findById(id)
+                .orElseThrow(() -> new EntityNotFoundException(MenuItemReview.class, id));
+
+        menuItemReviewRepository.delete(menuItemReview);
+        return genericMessage("MenuItemReview with id %s deleted".formatted(id));
+    }
+
+    @Operation(summary= "Update a single review")
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
+    @PutMapping("")
+    public MenuItemReview updateMenuItemReview(
+            @Parameter(name="id") @RequestParam Long id,
+            @RequestBody @Valid MenuItemReview incoming) {
+
+        MenuItemReview menuItemReview = menuItemReviewRepository.findById(id)
+                .orElseThrow(() -> new EntityNotFoundException(MenuItemReview.class, id));
+
+        menuItemReview.setItemId(incoming.getItemId());
+        menuItemReview.setReviewerEmail(incoming.getReviewerEmail());
+        menuItemReview.setStars(incoming.getStars());
+        menuItemReview.setDateReviewed(incoming.getDateReviewed());
+        menuItemReview.setComments(incoming.getComments());
+
+        menuItemReviewRepository.save(menuItemReview);
+
+        return menuItemReview;
+    }
+
 }
