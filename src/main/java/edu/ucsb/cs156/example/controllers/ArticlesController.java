@@ -94,7 +94,7 @@ public class ArticlesController extends ApiController {
         return genericMessage("Article with id %s deleted".formatted(id));
     }
 
-    @Operation(summary= "Update a single date")
+    @Operation(summary= "Update a single article")
     @PreAuthorize("hasRole('ROLE_ADMIN')")
     @PutMapping("")
     public Articles updateUCSBDate(
