@@ -78,5 +78,38 @@ import java.time.LocalDateTime;
 
 <span class="fc" id="L79">        return savedRecReq;</span>
     }
+
+    @Operation(summary= &quot;Get a single recommendation request&quot;)
+    @PreAuthorize(&quot;hasRole('ROLE_USER')&quot;)
+    @GetMapping(&quot;&quot;)
+    public RecommendationRequest getById(
+            @Parameter(name=&quot;id&quot;) @RequestParam Long id) {
+<span class="fc" id="L87">        RecommendationRequest recommendationRequest = recReqRepository.findById(id)</span>
+<span class="fc" id="L88">                .orElseThrow(() -&gt; new EntityNotFoundException(RecommendationRequest.class, id));</span>
+
+<span class="fc" id="L90">        return recommendationRequest;</span>
+    }
+
+    @Operation(summary= &quot;Update a single recommendation request&quot;)
+    @PreAuthorize(&quot;hasRole('ROLE_ADMIN')&quot;)
+    @PutMapping(&quot;&quot;)
+    public RecommendationRequest updateRecommendationRequest(
+            @Parameter(name=&quot;id&quot;) @RequestParam Long id,
+            @RequestBody @Valid RecommendationRequest incoming) {
+
+<span class="fc" id="L100">        RecommendationRequest recommendationRequest = recReqRepository.findById(id)</span>
+<span class="fc" id="L101">                .orElseThrow(() -&gt; new EntityNotFoundException(RecommendationRequest.class, id));</span>
+
+<span class="fc" id="L103">        recommendationRequest.setRequesterEmail(incoming.getRequesterEmail());</span>
+<span class="fc" id="L104">        recommendationRequest.setProfessorEmail(incoming.getProfessorEmail());</span>
+<span class="fc" id="L105">        recommendationRequest.setExplanation(incoming.getExplanation());</span>
+<span class="fc" id="L106">        recommendationRequest.setDateRequested(incoming.getDateRequested());</span>
+<span class="fc" id="L107">        recommendationRequest.setDateNeeded(incoming.getDateNeeded());</span>
+<span class="fc" id="L108">        recommendationRequest.setDone(incoming.getDone());</span>
+
+<span class="fc" id="L110">        recReqRepository.save(recommendationRequest);</span>
+
+<span class="fc" id="L112">        return recommendationRequest;</span>
+    }
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>

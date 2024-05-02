@@ -94,7 +94,7 @@ import java.time.LocalDateTime;
 <span class="fc" id="L94">        return genericMessage(&quot;Article with id %s deleted&quot;.formatted(id));</span>
     }
 
-    @Operation(summary= &quot;Update a single date&quot;)
+    @Operation(summary= &quot;Update a single article&quot;)
     @PreAuthorize(&quot;hasRole('ROLE_ADMIN')&quot;)
     @PutMapping(&quot;&quot;)
     public Articles updateUCSBDate(
