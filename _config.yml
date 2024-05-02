@@ -23,4 +23,4 @@ repo_name: "TBD"
 repo: ucsb-cs156-s24/team02-s24-4pm-7
 owner: ucsb-cs156-s24
 repo_name: team02-s24-4pm-7
-pull_requests: [{"author":{"id":"MDQ6VXNlcjMyMTUwMjk5","is_bot":false,"login":"james-y-f","name":"James Fu"},"headRefName":"James-RecRequest-delete","number":56,"title":"added DELETE api call to recommendation requests - just merge this one","url":"https://github.com/ucsb-cs156-s24/team02-s24-4pm-7/pull/56"},{"author":{"id":"MDQ6VXNlcjg2OTg1OTQx","is_bot":false,"login":"mczimmermann","name":"Michelle Z"},"headRefName":"Che-Articles","number":55,"title":"Finishing Articles Controller","url":"https://github.com/ucsb-cs156-s24/team02-s24-4pm-7/pull/55"}]
+pull_requests: [{"author":{"id":"MDQ6VXNlcjMyMTUwMjk5","is_bot":false,"login":"james-y-f","name":"James Fu"},"headRefName":"James-RecRequest-delete","number":56,"title":"added DELETE api call to recommendation requests - just merge this one","url":"https://github.com/ucsb-cs156-s24/team02-s24-4pm-7/pull/56"}]
