@@ -303,56 +303,60 @@ public class RecommendationRequestsControllerTests extends ControllerTestCase {
         }
 
 
-//         // Tests for DELETE /api/recommendationrequests?id=... 
+        // Tests for DELETE /api/recommendationrequests?id=... 
 
-//         @WithMockUser(roles = { "ADMIN", "USER" })
-//         @Test
-//         public void admin_can_delete_a_date() throws Exception {
-//                 // arrange
+        @WithMockUser(roles = { "ADMIN", "USER" })
+        @Test
+        public void admin_can_delete_a_date() throws Exception {
+                // arrange
 
-//                 LocalDateTime ldt1 = LocalDateTime.parse("2022-01-03T00:00:00");
+                LocalDateTime ldt1 = LocalDateTime.parse("2022-01-03T00:00:00");
+                LocalDateTime ldt2 = LocalDateTime.parse("2022-03-11T00:00:00");
 
-//                 RecommendationRequest recommendationRequest1 = RecommendationRequest.builder()
-//                                 .name("firstDayOfClasses")
-//                                 .quarterYYYYQ("20222")
-//                                 .localDateTime(ldt1)
-//                                 .build();
+                RecommendationRequest recommendationRequest1 = RecommendationRequest.builder()
+                                .requesterEmail("gaucho1@ucsb.edu")
+                                .professorEmail("prof1@ucsb.edu")
+                                .explanation("I need a recommendation for grad school 1")
+                                .dateRequested(ldt1)
+                                .dateNeeded(ldt2)
+                                .done(true)
+                                .build();
 
-//                 when(RecommendationRequestRepository.findById(eq(15L))).thenReturn(Optional.of(recommendationRequest1));
+                when(RecommendationRequestRepository.findById(eq(15L))).thenReturn(Optional.of(recommendationRequest1));
 
-//                 // act
-//                 MvcResult response = mockMvc.perform(
-//                                 delete("/api/recommendationrequests?id=15")
-//                                                 .with(csrf()))
-//                                 .andExpect(status().isOk()).andReturn();
+                // act
+                MvcResult response = mockMvc.perform(
+                                delete("/api/recommendationrequests?id=15")
+                                                .with(csrf()))
+                                .andExpect(status().isOk()).andReturn();
 
-//                 // assert
-//                 verify(RecommendationRequestRepository, times(1)).findById(15L);
-//                 verify(RecommendationRequestRepository, times(1)).delete(any());
+                // assert
+                verify(RecommendationRequestRepository, times(1)).findById(15L);
+                verify(RecommendationRequestRepository, times(1)).delete(any());
 
-//                 Map<String, Object> json = responseToJson(response);
-//                 assertEquals("RecommendationRequest with id 15 deleted", json.get("message"));
-//         }
+                Map<String, Object> json = responseToJson(response);
+                assertEquals("RecommendationRequest with id 15 deleted", json.get("message"));
+        }
         
-//         @WithMockUser(roles = { "ADMIN", "USER" })
-//         @Test
-//         public void admin_tries_to_delete_non_existant_RecommendationRequest_and_gets_right_error_message()
-//                         throws Exception {
-//                 // arrange
+        @WithMockUser(roles = { "ADMIN", "USER" })
+        @Test
+        public void admin_tries_to_delete_non_existant_RecommendationRequest_and_gets_right_error_message()
+                        throws Exception {
+                // arrange
 
-//                 when(RecommendationRequestRepository.findById(eq(15L))).thenReturn(Optional.empty());
+                when(RecommendationRequestRepository.findById(eq(15L))).thenReturn(Optional.empty());
 
-//                 // act
-//                 MvcResult response = mockMvc.perform(
-//                                 delete("/api/recommendationrequests?id=15")
-//                                                 .with(csrf()))
-//                                 .andExpect(status().isNotFound()).andReturn();
+                // act
+                MvcResult response = mockMvc.perform(
+                                delete("/api/recommendationrequests?id=15")
+                                                .with(csrf()))
+                                .andExpect(status().isNotFound()).andReturn();
 
-//                 // assert
-//                 verify(RecommendationRequestRepository, times(1)).findById(15L);
-//                 Map<String, Object> json = responseToJson(response);
-//                 assertEquals("RecommendationRequest with id 15 not found", json.get("message"));
-//         }
+                // assert
+                verify(RecommendationRequestRepository, times(1)).findById(15L);
+                Map<String, Object> json = responseToJson(response);
+                assertEquals("RecommendationRequest with id 15 not found", json.get("message"));
+        }
 
 
 }
