@@ -23,4 +23,4 @@ repo_name: "TBD"
 repo: ucsb-cs156-s24/team02-s24-4pm-7
 owner: ucsb-cs156-s24
 repo_name: team02-s24-4pm-7
-pull_requests: [{"author":{"id":"MDQ6VXNlcjMyMTUwMjk5","is_bot":false,"login":"james-y-f","name":"James Fu"},"headRefName":"James-RecRequest-get","number":53,"title":"Added get api call for Recommendation Request","url":"https://github.com/ucsb-cs156-s24/team02-s24-4pm-7/pull/53"}]
+pull_requests: [{"author":{"id":"MDQ6VXNlcjMyMTUwMjk5","is_bot":false,"login":"james-y-f","name":"James Fu"},"headRefName":"James-RecRequest-put","number":54,"title":"added PUT api call for recommendation requests","url":"https://github.com/ucsb-cs156-s24/team02-s24-4pm-7/pull/54"},{"author":{"id":"MDQ6VXNlcjMyMTUwMjk5","is_bot":false,"login":"james-y-f","name":"James Fu"},"headRefName":"James-RecRequest-get","number":53,"title":"Added get api call for Recommendation Request","url":"https://github.com/ucsb-cs156-s24/team02-s24-4pm-7/pull/53"}]
