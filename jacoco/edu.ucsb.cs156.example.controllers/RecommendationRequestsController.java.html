@@ -78,5 +78,16 @@ import java.time.LocalDateTime;
 
 <span class="fc" id="L79">        return savedRecReq;</span>
     }
+
+    @Operation(summary= &quot;Get a single date&quot;)
+    @PreAuthorize(&quot;hasRole('ROLE_USER')&quot;)
+    @GetMapping(&quot;&quot;)
+    public RecommendationRequest getById(
+            @Parameter(name=&quot;id&quot;) @RequestParam Long id) {
+<span class="fc" id="L87">        RecommendationRequest recommendationRequest = recReqRepository.findById(id)</span>
+<span class="fc" id="L88">                .orElseThrow(() -&gt; new EntityNotFoundException(RecommendationRequest.class, id));</span>
+
+<span class="fc" id="L90">        return recommendationRequest;</span>
+    }
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>
